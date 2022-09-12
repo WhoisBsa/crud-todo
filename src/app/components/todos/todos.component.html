@@ -1,0 +1,23 @@
+<div class="container mat-elevation-z8">
+  <mat-card class="mat-elevation-z8" ngStyle.lt-md="width: 100%">
+    <h1 class="shadow-pop-tr" style="padding-right: 4px;">SEU TODO. TODO DIA!</h1>
+    <div class="todo-area">
+      <form>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Nova tarefa</mat-label>
+          <input matInput placeholder="Adicione uma nova tarefa" name="todo" [(ngModel)]="novoTodo" (keydown.enter)="addTodo()">
+        </mat-form-field>
+      </form>
+
+      <mat-selection-list #shoes>
+        <mat-list-option *ngFor="let todo of todos" (selectedChange)="updateTodo(todo, $event)">
+          <div style="display:flex; justify-content: space-between">
+            <span>{{todo.title}}</span>
+            <span></span>
+            <mat-icon (click)="$event.stopPropagation(); deleteTodo(todo)" color="warn">close</mat-icon>
+          </div>
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+  </mat-card>
+</div>
